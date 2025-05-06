@@ -32,7 +32,7 @@ var versionCmd = &cobra.Command{
 	},
 }
 
-func main() {
+func CHANGE_FUNC_NAME() {
 	rootCmd.AddCommand(greetCmd)
 	rootCmd.AddCommand(versionCmd)
 
