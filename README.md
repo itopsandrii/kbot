@@ -6,6 +6,7 @@ Telegram bot written in GO using [telebot.v4](https://pkg.go.dev/gopkg.in/telebo
 [Link for the bot]: (https://t.me/supaduba_bot) 
 
 ## Project structure:
+```
 .
 ├── cmd/
 │ ├── root.go    # main CLI entry point
@@ -14,7 +15,7 @@ Telegram bot written in GO using [telebot.v4](https://pkg.go.dev/gopkg.in/telebo
 ├── go.mod
 ├── main.go
 └── README.md
-
+```
 ## Requirements & Setup 
 
 ### 1. Make sure Go is installed
