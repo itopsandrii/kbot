@@ -41,11 +41,11 @@ go mod tidy
 export TELE_TOKEN=YOUR_TOKEN
 ```
 ## CLI commands 
-
+```
 go run . kbot    - run telegram bot 
 go run . version - check version of telegram bot
 go run . --help  - shows all available commands 
-
+```
 ## Example: 
 ```bash
 go run . kbot
