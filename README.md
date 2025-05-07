@@ -2,8 +2,8 @@
 
 Telegram bot written in GO using [telebot.v4](https://pkg.go.dev/gopkg.in/telebot.v4) and [spf13/cobra](https://github.com/spf13/cobra)
 
-## Bot 
-[Link for the bot]: (https://t.me/supaduba_bot) 
+## Telegram Bot  
+[t.me/supaduba_bot](https://t.me/supaduba_bot)
 
 ## Project structure:
 ```
