@@ -46,6 +46,12 @@ test:
 get:
 	@go get
 
+docker_build_binary:
+	docker build -f Dockerfile.build -t $(APP)-builder --build-arg PLATFORM=$(PLATFORM) --build-arg ARCH=$(ARCH) .
+	docker create --name $(APP)-builder-container $(APP)-builder
+	docker cp $(APP)-builder-container:/app/kbot-$(PLATFORM)-$(ARCH) ./kbot-$(PLATFORM)-$(ARCH)
+	docker rm $(APP)-builder-container
+
 build: format get
 	@echo "Building for $(PLATFORM)/$(ARCH)"
 	@GOOS=$(PLATFORM) GOARCH=$(ARCH) CGO_ENABLED=0 \
