@@ -1,3 +1,5 @@
+.PHONY: image push clean clean_all
+
 VERSION := $(shell git describe --tags --abbrev=0)-$(shell git rev-parse --short HEAD)
 APP := $(shell basename $(shell git remote get-url origin))
 REGISTRY := ghcr.io/itopsandrii
@@ -34,33 +36,25 @@ help:
 	@echo "  Example: make build PLATFORM=linux ARCH=arm64"
 
 
-format:
-	@which gofmt >/dev/null 2>&1 && gofmt -s -w ./ || echo "gofmt not found, skipping format"
+#format:
+#	@which gofmt >/dev/null 2>&1 && gofmt -s -w ./ || echo "gofmt not found, skipping format"
 
-lint:
-	@golint 
+#lint:
+#	@golint 
 
-test:
-	@go test -v 
+#test:
+#	@go test -v 
+#
+#get:
+#	@go get
 
-get:
-	@go get
-
-build: format get
-	@echo "Building for $(PLATFORM)/$(ARCH)"
-	@GOOS=$(PLATFORM) GOARCH=$(ARCH) CGO_ENABLED=0 \
+#build: format get
+#	@echo "Building for $(PLATFORM)/$(ARCH)"
+#	@GOOS=$(PLATFORM) GOARCH=$(ARCH) CGO_ENABLED=0 \
 		go build -v -o kbot-$(PLATFORM)-$(ARCH) \
 		-ldflags "-X=github.com/itopsandrii/kbot/cmd.appVersion=$(VERSION)"
 
-docker_build_binary:
-	docker build -f Dockerfile.build -t $(APP)-builder --build-arg PLATFORM=$(PLATFORM) --build-arg ARCH=$(ARCH) .
-	docker create --name $(APP)-builder-container $(APP)-builder
-	docker cp $(APP)-builder-container:/app/kbot-$(PLATFORM)-$(ARCH) ./kbot-$(PLATFORM)-$(ARCH)
-	docker rm $(APP)-builder-container
-
-
-
-image:	build
+image:
 	@echo "Building Docker image $(REGISTRY)/$(APP):$(TAG)"
 	@docker build -f Dockerfile \
 		-t $(REGISTRY)/$(APP):$(TAG) \
