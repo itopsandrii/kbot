@@ -1,9 +1,14 @@
-FROM alpine:latest
+# Сборочный образ с Go
+FROM quay.io/projectquay/golang:1.22 as builder
 
 WORKDIR /
+COPY . .
+ARG TARGETOS=linux
+ARG TARGETARCH=amd64
+RUN GOOS=${TARGETOS} GOARCH=${TARGETARCH} CGO_ENABLED=0 go build -v -o kbot .
 
-ARG BINARY_FILE
-
-COPY ${BINARY_FILE} /kbot
-
-ENTRYPOINT ["/kbot", "kbot"]
+# Финальный минимальный образ
+FROM scratch
+WORKDIR /
+COPY --from=builder /kbot /kbot
+ENTRYPOINT ["/kbot"]

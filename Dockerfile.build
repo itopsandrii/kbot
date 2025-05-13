@@ -1,7 +1,0 @@
-FROM quay.io/projectquay/golang:1.24
-WORKDIR /app
-COPY . .
-ARG PLATFORM
-ARG ARCH
-RUN GOOS=$PLATFORM GOARCH=$ARCH CGO_ENABLED=0 go build -v -o kbot-$PLATFORM-$ARCH \
-    -ldflags "-X=github.com/itopsandrii/kbot/cmd.appVersion=$(VERSION)"
