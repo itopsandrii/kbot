@@ -54,6 +54,7 @@ build: format get
 
 
 image:
+	build
 	@echo "Building Docker image $(REGISTRY)/$(APP):$(TAG)"
 	@docker build -f Dockerfile \
 		-t $(REGISTRY)/$(APP):$(TAG) \
