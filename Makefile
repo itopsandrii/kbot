@@ -52,6 +52,13 @@ build: format get
 		go build -v -o kbot-$(PLATFORM)-$(ARCH) \
 		-ldflags "-X=github.com/itopsandrii/kbot/cmd.appVersion=$(VERSION)"
 
+docker_build_binary:
+	docker build -f Dockerfile.build -t $(APP)-builder --build-arg PLATFORM=$(PLATFORM) --build-arg ARCH=$(ARCH) .
+	docker create --name $(APP)-builder-container $(APP)-builder
+	docker cp $(APP)-builder-container:/app/kbot-$(PLATFORM)-$(ARCH) ./kbot-$(PLATFORM)-$(ARCH)
+	docker rm $(APP)-builder-container
+
+
 
 image:	build
 	@echo "Building Docker image $(REGISTRY)/$(APP):$(TAG)"
