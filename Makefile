@@ -53,8 +53,7 @@ build: format get
 		-ldflags "-X=github.com/itopsandrii/kbot/cmd.appVersion=$(VERSION)"
 
 
-image:
-	build
+image:	build
 	@echo "Building Docker image $(REGISTRY)/$(APP):$(TAG)"
 	@docker build -f Dockerfile \
 		-t $(REGISTRY)/$(APP):$(TAG) \
