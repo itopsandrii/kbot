@@ -35,7 +35,7 @@ help:
 
 
 format:
-	@gofmt -s -w ./
+	@which gofmt >/dev/null 2>&1 && gofmt -s -w ./ || echo "gofmt not found, skipping format"
 
 lint:
 	@golint 
