@@ -46,7 +46,7 @@ test:
 get:
 	@go get
 
-build: format get
+build:	format get
 	@echo "Building for $(PLATFORM)/$(ARCH)"
 	@GOOS=$(PLATFORM) GOARCH=$(ARCH) CGO_ENABLED=0 \
 		go build -v -o kbot-$(PLATFORM)-$(ARCH) \
