@@ -1,4 +1,4 @@
-.PHONY: image push clean clean_all
+.PHONY: image push clean clean_all set-version all
 
 VERSION := $(shell git describe --tags --abbrev=0)-$(shell git rev-parse --short HEAD)
 APP := $(shell basename $(shell git remote get-url origin))
@@ -9,6 +9,8 @@ PLATFORM ?= linux
 ARCH ?= amd64
 
 TAG := $(VERSION)-$(PLATFORM)-$(ARCH)
+
+VALUES_PATH := kbot/kbot/values.yaml
 
 help:
 	@echo "Available targets:"
@@ -64,6 +66,13 @@ image:
 push:
 	@echo "Pushing image $(REGISTRY)/$(APP):$(TAG)"
 	@docker push $(REGISTRY)/$(APP):$(TAG)
+
+set-version:
+	@echo "Updating tag in $(VALUES_PATH) to $(TAG)"
+	@sed -i 's/^tag: .*/tag: $(TAG)/' $(VALUES_PATH)
+
+all: image push set-version
+	@echo "Build, push, and update tag in values.yaml done!"
 
 
 clean:
