@@ -56,4 +56,4 @@ jobs:
       with:
         commit_message: Update Helm values.yaml tag to ${{ env.TAG }}
         branch: develop
-        file_pattern: kbot/kbot/values.yaml
+        file_pattern: kbot/values.yaml
