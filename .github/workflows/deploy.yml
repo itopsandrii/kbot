@@ -31,9 +31,9 @@ jobs:
     - name: Set VERSION and TAG
       id: vars
       run: |
-        VERSION=$(git describe --tags --abbrev=0)-$(git rev-parse --short HEAD)
-        TAG=${VERSION}-${PLATFORM}-${ARCH}
-        echo "TAG=$TAG" >> $GITHUB_ENV
+          VERSION=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
+          TAG=${VERSION}-$(git rev-parse --short HEAD)-${PLATFORM}-${ARCH}
+          echo "TAG=$TAG" >> $GITHUB_ENV
 
     - name: Build Docker image
       run: |
