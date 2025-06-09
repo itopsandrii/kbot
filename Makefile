@@ -10,7 +10,7 @@ ARCH ?= amd64
 
 TAG := $(VERSION)-$(PLATFORM)-$(ARCH)
 
-VALUES_PATH := kbot/kbot/values.yaml
+VALUES_PATH := kbot/values.yaml
 
 help:
 	@echo "Available targets:"
