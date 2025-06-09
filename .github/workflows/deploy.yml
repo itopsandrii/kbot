@@ -18,6 +18,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
       with: 
+        token: ${{ secrets.GHCR_TOKEN }}
         fetch-depth: 0
 
     - name: Set up Docker Buildx
@@ -57,5 +58,3 @@ jobs:
         commit_message: Update Helm values.yaml tag to ${{ env.TAG }}
         branch: develop
         file_pattern: kbot/values.yaml
-      env:
-        GHCR_TOKEN: ${{ secrets.GHCR_TOKEN }}
