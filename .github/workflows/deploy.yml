@@ -58,4 +58,4 @@ jobs:
         branch: develop
         file_pattern: kbot/values.yaml
       env:
-        GIT_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
+        GIT_AUTH_TOKEN: ${{ secrets.GHCR_TOKEN }}
