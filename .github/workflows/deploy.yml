@@ -57,6 +57,5 @@ jobs:
         commit_message: Update Helm values.yaml tag to ${{ env.TAG }}
         branch: develop
         file_pattern: kbot/values.yaml
-        commit_user_name: github-actions[bot]
-        commit_user_email: 41898282+github-actions[bot]@users.noreply.github.com
-        github_token: ${{ secrets.GH_TOKEN }}
+      env:
+        GIT_AUTH_TOKEN: ${{ secrets.GH_TOKEN }}
