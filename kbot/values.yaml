@@ -1,4 +1,0 @@
-repository: ghcr.io/itopsandrii/kbot
-tag: v1.0.5-e4f2a32
-arch: linux-amd64
-TELE_TOKEN: ""

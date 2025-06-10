@@ -2,7 +2,11 @@ name: KBOT CI/CD Pipeline
 
 on:
   push:
-    branches: [ develop ]
+    branches: 
+      - develop
+    paths-ignore:
+      - "helm/values.yaml"
+      
 
 jobs:
   build-and-deploy:
@@ -50,11 +54,11 @@ jobs:
 
     - name: Update values.yaml with new tag
       run: |
-        sed -i "s/^tag: .*/tag: $TAG/" kbot/values.yaml
+        sed -i 's/tag: .*/tag: '"$TAG"'/' helm/values.yaml
 
     - name: Commit and push updated values.yaml
       uses: stefanzweifel/git-auto-commit-action@v5
       with:
         commit_message: Update Helm values.yaml tag to ${{ env.TAG }}
         branch: develop
-        file_pattern: kbot/values.yaml
+        file_pattern: helm/values.yaml

@@ -69,7 +69,7 @@ push:
 
 set-version:
 	@echo "Updating tag in $(VALUES_PATH) to $(TAG)"
-	@sed -i 's/^tag: .*/tag: $(TAG)/' $(VALUES_PATH)
+	@sed -i 's/tag: .*/tag: '"$TAG"'/' $(VALUES_PATH)
 
 all: image push set-version
 	@echo "Build, push, and update tag in values.yaml done!"
