@@ -1,0 +1,7 @@
+image:
+  registry: "ghcr.io"
+  repository: "itopsandrii/kbot"
+  tag: "v1.1.1-f1b7b95-linux-amd64"
+  os: "linux"
+  arch: "amd64"
+TELE_TOKEN: ""
