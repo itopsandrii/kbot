@@ -4,4 +4,3 @@ image:
   tag: v1.1.1-00ec6d7-linux-amd64
   os: "linux"
   arch: "amd64"
-TELE_TOKEN: ""
