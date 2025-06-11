@@ -7,7 +7,7 @@ ARG TARGETOS=linux
 ARG TARGETARCH=amd64
 RUN GOOS=${TARGETOS} GOARCH=${TARGETARCH} CGO_ENABLED=0 go build -v -o kbot .
 
-# Финальный минимальный образ
+# Image
 FROM scratch
 WORKDIR /
 COPY --from=builder /kbot /kbot
