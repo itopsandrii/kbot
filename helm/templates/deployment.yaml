@@ -34,7 +34,7 @@ spec:
       {{- end }}
       containers:
         - name: {{ .Release.Name }}
-          image: "{{ .Values.repository }}:{{ .Values.tag }}-{{ .Values.arch | default "amd64"}}"
+          image: "{{ .Values.image.registry }}/{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           env:
             - name: TELE_TOKEN
               valueFrom:
