@@ -1,6 +1,6 @@
 image:
   registry: "ghcr.io"
   repository: "itopsandrii/kbot"
-  tag: v1.1.1-d63006e-linux-amd64
+  tag: v1.1.1-aa0e98c-linux-amd64
   os: "linux"
   arch: "amd64"
