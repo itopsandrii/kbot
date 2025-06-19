@@ -1,0 +1,18 @@
+echo "Running gitleaks scan..."
+
+gitleaks protect --staged -v
+
+
+RESULT=$?
+
+
+if [ $RESULT -ne 0 ]; 
+  echo "----------------------------------------"
+  echo "ERROR: Gitleaks found secrets in your code."
+  echo "Commit has been rejected. Please remove secrets and try again."
+  echo "----------------------------------------"
+  exit 1 
+fi
+
+
+exit 0
